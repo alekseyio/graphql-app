@@ -18,3 +18,15 @@ exports.createProject = async (rootValue, { input: { name, description } }) => {
 
   return project;
 };
+
+exports.deleteProject = async (rootValue, { input: { id } }) => {
+  const project = await Project.findById(id);
+
+  if (!project) {
+    return { statusCode: 404, message: 'Resource not found' };
+  }
+
+  await project.remove();
+
+  return { statusCode: 200, message: 'Success' };
+};

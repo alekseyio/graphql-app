@@ -26,6 +26,8 @@ exports.typeDefs = gql`
   type Mutation {
     "Create a new project"
     createProject(input: createProjectInput): Project
+    "Delete a project"
+    deleteProject(input: deleteProjectInput): deleteProjectPayload
   }
 
   input createProjectInput {
@@ -33,5 +35,15 @@ exports.typeDefs = gql`
     name: String!
     "Project's description"
     description: String!
+  }
+
+  input deleteProjectInput {
+    "Project's id"
+    id: ID!
+  }
+
+  type deleteProjectPayload {
+    statusCode: Int
+    message: String
   }
 `;
