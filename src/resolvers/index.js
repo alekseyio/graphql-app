@@ -1,4 +1,9 @@
-const { projects, project, projectsResolver } = require('./projects.resolver');
+const {
+  projects,
+  project,
+  projectsResolver,
+  createProject
+} = require('./projects.resolver');
 const { task, tasksResolver } = require('./tasks.resolver');
 
 exports.resolvers = {
@@ -6,6 +11,9 @@ exports.resolvers = {
     projects,
     project,
     task
+  },
+  Mutation: {
+    createProject
   },
   Project: projectsResolver,
   Task: tasksResolver
