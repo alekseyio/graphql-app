@@ -36,3 +36,18 @@ exports.deleteTask = async (rootValue, { input: { id } }) => {
     return { statusCode: 404, message: 'Resource not found' };
   }
 };
+
+exports.toggleTask = async (rootValue, { input: { id, completed } }) => {
+  try {
+    const task = await Task.findById(id);
+
+    if (!task) throw new Error();
+
+    task.set({ completed });
+    await task.save();
+
+    return { statusCode: 200, task };
+  } catch (err) {
+    return { statusCode: 404, message: 'Resource not found' };
+  }
+};

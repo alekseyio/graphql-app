@@ -32,6 +32,8 @@ exports.typeDefs = gql`
     createTask(input: createTaskInput): createTaskPayload
     "Delete a task"
     deleteTask(input: deleteTaskInput): deleteActionPayload
+    "Toggle 'complete' field on Task"
+    toggleTask(input: toggleTaskInput): toggleTaskPayload
   }
 
   input createProjectInput {
@@ -67,5 +69,17 @@ exports.typeDefs = gql`
   input deleteTaskInput {
     "Task's id"
     id: ID!
+  }
+
+  input toggleTaskInput {
+    "Task's id"
+    id: ID!
+    "Value to be set on 'completed' field"
+    completed: Boolean!
+  }
+
+  type toggleTaskPayload {
+    statusCode: Int
+    task: Task
   }
 `;

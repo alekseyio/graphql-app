@@ -9,7 +9,8 @@ const {
   task,
   tasksResolver,
   createTask,
-  deleteTask
+  deleteTask,
+  toggleTask
 } = require('./tasks.resolver');
 
 exports.resolvers = {
@@ -22,7 +23,8 @@ exports.resolvers = {
     createProject,
     deleteProject,
     createTask,
-    deleteTask
+    deleteTask,
+    toggleTask
   },
   Project: projectsResolver,
   Task: tasksResolver
