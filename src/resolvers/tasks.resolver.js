@@ -22,3 +22,17 @@ exports.createTask = async (rootValue, { input: { projectId, content } }) => {
     return { statusCode: 404, message: 'Resource not found' };
   }
 };
+
+exports.deleteTask = async (rootValue, { input: { id } }) => {
+  try {
+    const task = await Task.findById(id);
+
+    if (!task) throw new Error();
+
+    await task.remove();
+
+    return { statusCode: 200, message: 'Deleted' };
+  } catch (err) {
+    return { statusCode: 404, message: 'Resource not found' };
+  }
+};

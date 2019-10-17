@@ -27,9 +27,11 @@ exports.typeDefs = gql`
     "Create a new project"
     createProject(input: createProjectInput): Project
     "Delete a project"
-    deleteProject(input: deleteProjectInput): deleteProjectPayload
+    deleteProject(input: deleteProjectInput): deleteActionPayload
     "Create a task"
     createTask(input: createTaskInput): createTaskPayload
+    "Delete a task"
+    deleteTask(input: deleteTaskInput): deleteActionPayload
   }
 
   input createProjectInput {
@@ -44,7 +46,7 @@ exports.typeDefs = gql`
     id: ID!
   }
 
-  type deleteProjectPayload {
+  type deleteActionPayload {
     statusCode: Int
     message: String
   }
@@ -60,5 +62,10 @@ exports.typeDefs = gql`
     statusCode: Int
     message: String
     task: Task
+  }
+
+  input deleteTaskInput {
+    "Task's id"
+    id: ID!
   }
 `;
