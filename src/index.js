@@ -4,7 +4,11 @@ const { typeDefs } = require('./typeDefs');
 const { resolvers } = require('./resolvers');
 const { connectDb } = require('./connectDb');
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  engine: { debugPrintReports: true }
+});
 
 connectDb()
   .then(() => console.log('DB connection established'))

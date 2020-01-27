@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --watch src src/index.js"
+    "dev": "nodemon --watch src src/index.js",
+    "benchmark": "node ./src/benchmark.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,7 @@
     "mongoose": "^5.7.5"
   },
   "devDependencies": {
+    "autocannon": "^4.5.2",
     "nodemon": "^1.19.3"
   }
 }
